@@ -1,19 +1,22 @@
-import React, {useEffect, useState} from 'react';
-import './scss/app.scss';
-import './components/Header';
+import React, {useEffect, useState} from "react";
+import "./scss/app.scss";
+import "./components/Header";
 import {Header} from "./components/Header";
 import {Categories} from "./components/Categories";
 import {Sort} from "./components/Sort";
-import {PizzaBlock} from "./components/PizzaBlock";
+import {PizzaBlock} from "./components/PizzaBlock/PizzaBlock";
+import {Skeleton} from "./components/PizzaBlock/Skeleton";
 
 function App() {
-    const [items, setItems] = useState([])
+    const [items, setItems] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch('https://629e737c8b939d3dc2820978.mockapi.io/items')
+        fetch("https://629e737c8b939d3dc2820978.mockapi.io/items")
             .then((res) => res.json())
             .then((arr) => {
                 setItems(arr);
+                setIsLoading(false); 
             });
     }, []);
 
@@ -28,21 +31,16 @@ function App() {
                     </div>
                     <h2 className="content__title">Все пиццы</h2>
                     <div className="content__items">
-                        {items.map(({id, imageUrl, price, sizes, title, types}) => (
-                            <PizzaBlock
-                                key={id}
-                                title={title}
-                                price={price}
-                                imageUrl={imageUrl}
-                                sizes={sizes}
-                                types={types}
-                            />
-                        ))}
+                        {isLoading
+                            ? [...new Array(6)].map((_, index) => <Skeleton key={index}/>)
+                            : items.map(({id, imageUrl, price, sizes, title, types}) => (
+                                <PizzaBlock key={id} title={title} price={price} imageUrl={imageUrl} sizes={sizes} types={types}/>
+                            ))}
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default App;
