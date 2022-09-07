@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import './index.scss';
+import './scss/app.scss';
 
 function App() {
-
   return (
     <div class="wrapper">
       <div class="header">
