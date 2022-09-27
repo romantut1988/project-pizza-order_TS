@@ -24,6 +24,21 @@ body {
 .content {
   padding: 40px 0;
 
+  &__content__error-info {
+    margin: 100px auto;
+    width: 500px;
+    text-align: center;
+
+    h2 {
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 20px;
+    }
+  }
+
   @media (max-width: 645px) {
     padding: 0px;
   }
