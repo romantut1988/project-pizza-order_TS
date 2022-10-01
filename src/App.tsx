@@ -1,6 +1,4 @@
-import { Outlet, Route, Routes } from 'react-router-dom';
-
-import Header from './components/Header';
+import { Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Cart from './pages/Cart';
@@ -20,7 +18,7 @@ function App() {
         <Route path="/pizza/:id" element={<FullPizza />} />
         <Route path="*" element={<NotFound />} />
       </Route>
-    </Routes>
+    </Routes> 
   );
 }
 

@@ -9,7 +9,6 @@ import Sort from "../components/Sort";
 import PizzaBlock from "../components/PizzaBlock";
 import Sceleton from "../components/PizzaBlock/Sceleton";
 import Pagination from "../components/Pagination";
-import { SearchContext } from "../App";
 import { sortList } from "../components/Sort";
 
 import {
