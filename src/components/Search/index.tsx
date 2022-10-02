@@ -1,10 +1,9 @@
 import React, { useCallback, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import { setSearchValue } from "../../redux/slices/filterSlice";
 import debounce from "lodash.debounce";
 
 import styles from "./Search.module.scss";
-
-import { useDispatch } from "react-redux";
 
 const Search: React.FC = () => {
   const dispatch = useDispatch();
@@ -18,13 +17,13 @@ const Search: React.FC = () => {
   };
 
   const updateSearchValue = useCallback(
-    debounce((str: any) => {
+    debounce((str: string) => {
       dispatch(setSearchValue(str));
     }, 150),
     []
   );
 
-  const onChangeInput = (event: any) => {
+  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
     updateSearchValue(event.target.value);
   };
