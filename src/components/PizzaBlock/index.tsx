@@ -70,7 +70,7 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({
           <ul>
             {sizes.map((size, index) => (
               <li
-                key={index}
+                key={size}
                 onClick={() => setActiveSize(index)}
                 className={activeSize === index ? "active" : ""}
               >
