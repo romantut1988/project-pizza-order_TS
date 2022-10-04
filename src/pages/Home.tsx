@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import qs, { stringify } from "qs";
 
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -9,21 +8,12 @@ import Sort from "../components/Sort";
 import PizzaBlock from "../components/PizzaBlock";
 import Sceleton from "../components/PizzaBlock/Sceleton";
 import Pagination from "../components/Pagination";
-import { sortList } from "../components/Sort";
 
-import {
-  FilterSliceState,
-  selectFilter,
-  setCategoryId,
-  setCurrentPage,
-  setFilters,
-} from "../redux/slices/filterSlice";
-import {
-  fetchPizzas,
-  SearchPizzaParams,
-  selectPizzaData,
-} from "../redux/slices/pizzaSlice";
 import { useAppDispatch } from "../redux/store";
+import { setCategoryId, setCurrentPage } from "../redux/filter/slice";
+import { selectFilter } from "../redux/filter/selectors";
+import { selectPizzaData } from "../redux/pizza/selectors";
+import { fetchPizzas } from "../redux/pizza/asynkActions";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
